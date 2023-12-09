@@ -5,3 +5,5 @@ pyvenv.cfg
 telegram.py
 __pycache__/
 anon.session
+data
+mysql_cfg.py
