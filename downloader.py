@@ -1,7 +1,7 @@
 from telethon import TelegramClient, events, sync
 import json
 import time
-from nltk.tokenize import sent_tokenize
+#from nltk.tokenize import sent_tokenize
 from telegram import get_creds
 
 # Remember to use your own values from my.telegram.org!
