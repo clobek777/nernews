@@ -8,10 +8,10 @@ def clean_text(input_text):
     cleaned_text = re.sub(r'[^\w\s,.!?;:()-а-яА-ЯёЁA-Za-z]', '', input_text)
     return cleaned_text
 
-def json_pars(data_path):
+def load_json_file(filename, last_tgid):
 	# Opening JSON file
-	#f = open(data_path, encoding="utf8")
-	f = open('data/data.json', encoding="utf8")
+	f = open(filename, encoding="utf8")
+	#f = open('data/data.json', encoding="utf8")
 
 	# returns JSON object as
 	# a dictionary

@@ -1,7 +1,7 @@
 import mysql.connector
 from mysql.connector import errorcode
 from mysql_cfg import get_creds_mysql
-from json_test import json_pars
+from json_test import load_json_file
 from json_test import clean_text
 
 user, password, host, database = get_creds_mysql()
@@ -24,7 +24,7 @@ except mysql.connector.Error as err:
 
 mycursor = cnx.cursor()
 sql = "INSERT INTO messages (tg_id, plain_text) VALUES (%s, %s);"
-val = json_pars('1')
+val = load_json_file('data/data.json', 1)
 mycursor.executemany(sql, val)
 
 cnx.commit()
