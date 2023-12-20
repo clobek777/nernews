@@ -37,4 +37,4 @@ def  get_tg_id():
     return (last_tg_id)
 
 
-get_tg_id()
+#get_tg_id()
