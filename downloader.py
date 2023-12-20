@@ -3,7 +3,7 @@ import json
 import time
 #from nltk.tokenize import sent_tokenize
 from telegram import get_creds
-
+from check_id import get_tg_id
 # Remember to use your own values from my.telegram.org!
 api_id, api_hash = get_creds()
 
@@ -12,7 +12,7 @@ client = TelegramClient('anon', api_id, api_hash)
 client.start()
 channel_name = 'shadow_policy'
 #channel_name = 'rospres'
-
+last_tg_id = get_tg_id()
 bulk = list()
 
 # Preprocess message before saving it
@@ -28,28 +28,29 @@ def process_message(plain_message):
     return plain_message
 
 ch_entity = client.get_entity("telegram.me/shadow_policy")
-
 #for message in client.iter_messages(channel_name, reverse=True):
 for message in client.iter_messages(ch_entity, reverse=True):
     if message.text == None:
         continue
 
-    msg_list = process_message(message.text)
+#    msg_list = process_message(message.text)
 
     #print(message.text)
-    r = (message.id, msg_list)
-    bulk.append(r)
+    r = (message.id, message.text)
+    if int(message.id) >= int(last_tg_id):
+        print(r)
+        bulk.append(r)
 
     # Debug printing
-    if len(msg_list) != 0:
+    #if len(msg_list) != 0:
         #print("id:{} msg:{}".format(message.id, msg_list[0]))
-        print("id:{} msg:{}".format(message.id, msg_list))
+     #   print("id:{} msg:{}".format(message.id, msg_list))
 
     # Check if there is a photo or video
-    if message.media is not None:
+  #  if message.media is not None:
         #output = "data/{}/{}".format(channel_name, message.id)
-        output = "data/{}/{}".format(ch_entity.title, message.id)
-        client.download_media(message=message, file=output)
+   #     output = "data/{}/{}".format(ch_entity.title, message.id)
+    #    client.download_media(message=message, file=output)
 
     if message.id >= 1000:
         print("---------------------- I've reached the limit! ____________________\n")
@@ -57,8 +58,8 @@ for message in client.iter_messages(ch_entity, reverse=True):
         # break
 
     time.sleep(1)
-
-filename = "data/" + ch_entity.title + ".json"
+filename = "data/data_last_tg_id_test.json"
+#filename = "data/" + ch_entity.title + ".json"
 with open(filename, 'w', encoding='utf-8') as json_file:
     json.dump(bulk, json_file, ensure_ascii=False)
 
