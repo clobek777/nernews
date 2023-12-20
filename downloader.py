@@ -47,7 +47,7 @@ for message in client.iter_messages(ch_entity, reverse=True):
      #   print("id:{} msg:{}".format(message.id, msg_list))
 
     # Check if there is a photo or video
-#  if message.media is not None:
+##  if message.media is not None:
         #output = "data/{}/{}".format(channel_name, message.id)
    #     output = "data/{}/{}".format(ch_entity.title, message.id)
     #    client.download_media(message=message, file=output)
