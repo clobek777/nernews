@@ -1,5 +1,5 @@
 # nernews
 
 
-## Сравнениен моделей ner spaCy
-[статья на хабре](https://habr.com/ru/sandbox/156312/)
+## Сравнение моделей ner spaCy
+[Cтатья на хабре](https://habr.com/ru/sandbox/156312/)
